@@ -21,7 +21,7 @@ app.get("/products/", async (req, res) => {
 app.get("/products/:pid", async (req, res) => {
   let product = await manager.getProductById(req.params.pid);
 
-  res.send(product);
+  res.send(product || "El producto no existe");
 });
 
 app.listen(8080, () => console.log("arrib"));
