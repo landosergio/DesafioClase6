@@ -6,6 +6,10 @@ const manager = new ProductManager("./productos.json");
 
 app.use(express.urlencoded({ extended: true }));
 
+app.get("/", (req, res) => {
+  res.send("¡Bienvenido!");
+});
+
 app.get("/products/", async (req, res) => {
   let products = await manager.getProducts();
   let { limit } = req.query;
@@ -24,4 +28,4 @@ app.get("/products/:pid", async (req, res) => {
   res.send(product || "El producto no existe");
 });
 
-app.listen(8080, () => console.log("arrib"));
+app.listen(8080, () => console.log("Server listening on 8080"));
